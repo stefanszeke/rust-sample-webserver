@@ -8,15 +8,19 @@ use rust_server_book::ThreadPool;
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
-    let pool = ThreadPool::new(4);
+    let pool = ThreadPool::new(3);
 
-    for stream in listener.incoming() {
+    println!("✅ Server running ...");
+
+    for stream in listener.incoming().take(10) {
         let stream = stream.unwrap();
 
         pool.execute(|| {
             handle_connection(stream);
         });
     }
+
+    println!("❌ Server stopped.");
 }
 
 fn handle_connection(mut stream: TcpStream) {
