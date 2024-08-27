@@ -1,0 +1,12 @@
+.box {
+    display: grid;
+    justify-items: center;
+
+    min-width: 200px;
+    width: fit-content;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 10px;
+
+}
